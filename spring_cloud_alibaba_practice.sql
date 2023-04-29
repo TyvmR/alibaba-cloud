@@ -1,5 +1,4 @@
-/**chapterthree start**/
-/**multi-tenant-spring-cloud-alibaba**/
+
 CREATE DATABASE IF NOT EXISTS `spring_cloud_alibaba_practice`;
 use `spring_cloud_alibaba_practice`;
 DROP TABLE IF EXISTS `user`;
@@ -26,9 +25,7 @@ LOCK TABLES `USER_ADDR` WRITE;
 INSERT INTO `USER_ADDR` VALUES (1,1,'浙江省杭州市西湖区'),(2,4,'浙江省杭州市滨江区');
 UNLOCK TABLES;
 commit;
-/**multi-tenant-spring-cloud-alibaba**/
 
-/**multidata-source-spring-cloud-alibaba**/
 CREATE DATABASE IF NOT EXISTS `spring_cloud_alibaba_practice_master`;
 CREATE DATABASE IF NOT EXISTS `spring_cloud_alibaba_practice_slave1`;
 CREATE DATABASE IF NOT EXISTS `spring_cloud_alibaba_practice_slave2`;
@@ -81,9 +78,7 @@ LOCK TABLES `example2_product` WRITE;
 INSERT INTO `example2_product` VALUES (2334343434,5678,100,'slave2测试商品',0);
 UNLOCK TABLES;
 commit;
-/**multidata-source-spring-cloud-alibaba**/
 
-/**optimistic-locking-spring-cloud-alibaba**/
 use `spring_cloud_alibaba_practice`;
 DROP TABLE IF EXISTS `example2_product`;
 CREATE TABLE `example2_product` (
@@ -98,9 +93,7 @@ LOCK TABLES `example2_product` WRITE;
 INSERT INTO `example2_product` VALUES (3467374334,6778,983848034626479,'手机',0),(3477374334,7878,120,'苹果笔记本电脑',2);
 UNLOCK TABLES;
 commit;
-/**optimistic-locking-spring-cloud-alibaba**/
 
-/**replace-table-spring-cloud-alibaba**/
 use `spring_cloud_alibaba_practice`;
 DROP TABLE IF EXISTS `example5_order_6767`;
 CREATE TABLE `example5_order_6767` (
@@ -142,18 +135,7 @@ LOCK TABLES `example5_order_8989` WRITE;
 INSERT INTO `example5_order_8989` VALUES (2233443,'租户8989的订单',34333434343);
 UNLOCK TABLES;
 commit;
-/**replace-table-spring-cloud-alibaba**/
-/**chapterthree end**/
 
-
-/**chapter four start**/
-/**idempotent-design-spring-cloud-alibaba中的表在前面已经创建了**/
-/**nacos-sync**/
-/**搭建Nacos Sync环境的时候需要执行nacosSync.sql语句**/
-/******************************************/
-/*   DB name = nacos_Sync   */
-/*   Table name = cluster   */
-/******************************************/
 CREATE DATABASE IF NOT EXISTS `nacos_sync`;
 use `nacos_sync`;
 CREATE TABLE `cluster` (
@@ -164,10 +146,7 @@ CREATE TABLE `cluster` (
                            `connect_key_list` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
                            PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-/******************************************/
-/*   DB name = nacos_Sync   */
-/*   Table name = system_config   */
-/******************************************/
+
 use `nacos_sync`;
 CREATE TABLE `system_config` (
                                  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -176,10 +155,7 @@ CREATE TABLE `system_config` (
                                  `config_value` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
                                  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-/******************************************/
-/*   DB name = nacos_Sync   */
-/*   Table name = task   */
-/******************************************/
+
 use `nacos_sync`;
 CREATE TABLE `task` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -195,20 +171,7 @@ CREATE TABLE `task` (
                         `worker_ip` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
                         PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-/**chapter four end**/
 
-/**chapter five start**/
-/**没有SQL执行**/
-/**chapter five end**/
-
-/**chapter six start**/
-/**没有SQL执行**/
-/**chapter six end**/
-
-/**chapter seven start**/
-/**7.3.1搭建Seata Server高可用的环境时需要执行的SQL语句**/
--- -------------------------------- The script used when storeMode is 'db' --------------------------------
--- the table to store GlobalSession data
 CREATE DATABASE IF NOT EXISTS `seata_server`;
 use `seata_server`;
 CREATE TABLE IF NOT EXISTS `global_table`
@@ -230,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `global_table`
     ) ENGINE = InnoDB
     DEFAULT CHARSET = utf8;
 
--- the table to store BranchSession data
+
 use `seata_server`;
 CREATE TABLE IF NOT EXISTS `branch_table`
 (
@@ -250,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `branch_table`
     ) ENGINE = InnoDB
     DEFAULT CHARSET = utf8;
 
--- the table to store lock data
+
 use `seata_server`;
 CREATE TABLE IF NOT EXISTS `lock_table`
 (
@@ -269,7 +232,6 @@ CREATE TABLE IF NOT EXISTS `lock_table`
     DEFAULT CHARSET = utf8;
 commit;
 
-/**业务实例需要的SQL语句**/
 use `seata_server`;
 CREATE TABLE IF NOT EXISTS `at_account` (
                               `id` bigint NOT NULL,
@@ -340,8 +302,6 @@ CREATE TABLE IF NOT EXISTS `at_warehouse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 commit;
 
-/**Seata 客户端 undo log**/
--- for AT mode you must to init this sql for you business database. the seata server not need it.
 use `seata_server`;
 CREATE TABLE IF NOT EXISTS `undo_log`
 (
@@ -389,25 +349,7 @@ CREATE TABLE `tcc_storage` (
                                PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 commit;
-/**chapter seven end**/
 
-/**chapter eight start**/
-/**没有SQL执行**/
-/**chapter eight end**/
-
-/**chapter nine start**/
-/**没有SQL执行**/
-/**chapter nine end**/
-
-/**chapter ten start**/
-/**没有SQL执行**/
-/**chapter ten end**/
-
-/**chapter eleven start**/
-/**没有SQL执行**/
-/**chapter eleven end**/
-
-/**chapter twelve start**/
 CREATE DATABASE IF NOT EXISTS `datasource_0`;
 use `datasource_0`;
 CREATE TABLE `t_address` (
@@ -1151,25 +1093,7 @@ CREATE TABLE `t_order_1` (
                              `order_id` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 commit;
-/**chapter twelve end**/
 
-/**chapter thirteen start**/
-  /**NO SQL**/
-/**chapter thirteen end**/
-
-/**chapter fourteen start**/
-/**NO SQL**/
-/**chapter fourteen end**/
-
-/**chapter fiveteen start**/
-/**NO SQL**/
-/**chapter fiveteen end**/
-
-/**chapter sixteen start**/
-/**NO SQL**/
-/**chapter sixteen end**/
-
-/**chapter seventeen start**/
 CREATE DATABASE IF NOT EXISTS `datax_write`;
 use `datax_write`;
 CREATE TABLE `base_product_info` (
@@ -1251,9 +1175,3 @@ CREATE TABLE `product_info` (
                                 UNIQUE KEY `un_product_id` (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10253979 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 commit;
-/**chapter seventeen end**/
-
-/**chapter eightteen start**/
-
-/**NO SQL **/
-/**chapter eightteen end**/
